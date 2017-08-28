@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 		resources :accounts
 	end
 
+	resources :account_activations, only: [:edit]
+
 
 	get '/signup' => 'clients#new'
 	post '/clients' => 'clients#create'

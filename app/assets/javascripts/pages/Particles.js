@@ -18,8 +18,8 @@ var ball = {
    },
 
    ball_color = {
-       r: 50,
-       g: 50,
+       r: 25,
+       g: 25,
        b: 255
    },
    R = 2,

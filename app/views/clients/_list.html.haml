@@ -2,19 +2,25 @@
 	%thead
 		%tr
 			%th <b>Name</b>
+			%th <b>ID</b>
 			%th <b>Balance</b>
-			%th <b>Actions</b>
+			%th 
 	%tbody
 		- clients.each do |c|
 			%tr
 				%td #{c}
+				%td #{c.id}
 				%td #{number_to_currency(c.account.balance, unit: 'R ')}
 				%td
-					= link_to client_path(c.id) do
-						Profile
+					.btn-toolbar
+						= link_to client_path(c.id), class: 'btn btn-default' do
+							Profile
+						
 
-					|
+						=link_to client_account_path(c.id, c.account.id), class: 'btn btn-default' do
+							Account
 
-					=link_to client_account_path(c.id, c.account.id) do
-						Account
-					
+
+						= link_to 'Delete',  client_path(c.id), class: 'btn btn-danger',
+							data: { confirm: 'Are you sure?' }, method: :delete 
+						

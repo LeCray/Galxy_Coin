@@ -1,0 +1,32 @@
+
+
+<div>
+	<div>
+
+		<h2>GALXYBIT Capital</h2>
+
+		<p>What's up <%= @client.first_name %> :)</p>
+
+		<p>
+		Welcome to GALXYBIT! </br></br>
+
+		These are literally your first steps towards financial freedom. </br>
+		"Without risk there can be no reward"</br></br>
+
+		Click on the link below to activate your account:
+		</p>
+
+		</br>
+
+		<%= link_to "That account activation though", edit_account_activation_url(@client.activation_token,
+		                                                    email: @client.email) %>
+		</br>
+		</br>
+		</br>
+
+		Kind Regards, </br>
+		GALXYBIT Capital Service Desk
+			
+			                                                    
+	</div>	                                                   
+</div> 

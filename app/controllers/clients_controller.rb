@@ -13,9 +13,10 @@ class ClientsController < ApplicationController
 		@account = @client.build_account(client_id: @client.id, balance: 0.00)
 		
 		if @client.save && @account.save 
-			log_in @client	
-			redirect_to client_path(@client.id)
-			flash[:success] = "Welcome to Financial Freedom"
+			ClientMailer.account_activation(@client).deliver_now
+      		flash.now[:info] = "Awesome. Now swing over to your emails to activate your account :)"
+      		render 'new'
+
 		else
 			render 'new'
 		end
@@ -34,13 +35,11 @@ class ClientsController < ApplicationController
 
 	def destroy
 		@client = Client.find(params[:id])
-
-		if @client.balance > 0
-			redirect_to client_path(@client.id)
-		else
-			@client.destroy!
-			redirect_to clients_path
-		end
+		@client.destroy!
+		@account = @client.account
+		@account.destroy!
+		redirect_to clients_path
+		
 	end
 
 

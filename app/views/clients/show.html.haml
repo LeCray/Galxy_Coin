@@ -1,10 +1,20 @@
-.div_center
+.container
+
+	- flash.each do |key, value|
+		%div{:class => "alert alert-#{key}", :style => "text-align: center"}
+			= value	
+
+
+
+
+	
 	.row
-		.col-md-12
+		%div{:class => "col-md-5 col-md-offset-2", :style => "margin-top: 100px"}
 			%h1
 				#{@client}
 			%h4
-				#{@client.email}
+				#{@client.email} 
+	
 				%hr
 	
 					%h3
@@ -14,7 +24,7 @@
 					.btn-toolbar
 						= link_to root_path, class: 'btn btn-default' do
 							Home
-						=link_to client_account_path(@client.id, @client.account.id), class: 'btn btn-primary pull-right' do
+						=link_to client_account_path(@client.id, @client.account.id), class: 'btn btn-primary' do
 							Account
 
 
@@ -23,4 +33,4 @@
 
 
 
-		
+			

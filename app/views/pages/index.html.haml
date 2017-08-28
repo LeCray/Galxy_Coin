@@ -1,5 +1,6 @@
 %canvas{:id => "nokey", :width => "100%", :height => "100%"} 
-    
+    	
+
 #heading
 	.row
 		.col-md-12	
@@ -17,14 +18,16 @@
 
 	.row
 		.col-md-12
-			= link_to new_client_path do
-				JOIN NOW
-			%hr
-			= link_to login_path do
-				LOGIN
-			%hr
-			= link_to about_path do
-				about
+			.style{:color => 'white'}
+				= link_to new_client_path do
+					JOIN NOW
+				%hr
+				= link_to login_path do
+					LOGIN
+				%p{:color => 'white'}
+
+				= link_to about_path do
+					ABOUT
 		
 .java
 = javascript_include_tag 'pages/Particles.js'
